@@ -1,0 +1,37 @@
+
+.header {
+    width: 100%;
+    cursor: pointer;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    background-color:  rgb(26, 26, 43);
+    font-family: "Montserrat", sans-serif;
+    font-size: 4vw;
+    padding-bottom: 15px;
+    box-shadow: 0px 1px 5px black;
+    color: #fff;
+    /* color: rgb(24, 117, 231); */
+    border-bottom: 3px solid #f4f1f1;
+    z-index: 100;
+  }
+
+  /* .tvIcon{
+    background-color: red;
+    font-size: 400px;
+    height: 200%;
+  } */
+  
+  @media (max-width: 800px) {
+    .title {
+      padding-top: 20px;
+      font-size: 6.8vw;
+      
+    }
+    .tv{
+      padding-top: 15px;
+    }
+  }
+  
