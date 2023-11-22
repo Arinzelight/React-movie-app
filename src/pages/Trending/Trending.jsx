@@ -14,6 +14,7 @@ const Trending = () => {
     );
 
     console.log(data);
+    // console.log(data.result)
     setContent(data.results);
   };
 
