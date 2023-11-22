@@ -103,17 +103,7 @@ export default function TransitionsModal({ children, media_type, id }) {
                   alt={content.name || content.title}
                   className="ContentModal__portrait"
                 />
-                {/* <img
-                  src={
-                    content.backdrop_path
-                      ? `${img_500}/${content.backdrop_path}`
-                      : unavailableLandscape
-                  }
-                  alt={content.name || content.title}
-                  className="ContentModal__landscape"
-                /> */}
-
-              
+               
                 <div className="ContentModal__about">
 
                   <div className="iframeContainer">
