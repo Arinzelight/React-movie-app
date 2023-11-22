@@ -1,5 +1,7 @@
 * {
   scroll-behavior: smooth;
+  
+  
 }
 
 .app {
@@ -7,9 +9,12 @@
   background-color: rgb(26, 26, 43);
   /* background-color: #39445a; */
   color: white;
-  padding-top: 130px;
+  padding-top: 100px;
   padding-bottom: 70px;
 }
+
+
+
 
 
 .pageTitle {
@@ -18,20 +23,26 @@
   justify-content: center;
   font-family: "Montserrat", sans-serif;
   font-size: 2vw;
-  padding: 4px;
+  /* padding-bottom: 4px; */
+  /* margin-top: 8px; */
   border-radius: 50px;
-  margin: 10px;
-  color: rgb(242, 16, 61);
+  color: #777;
+}
+
+
+
+@media (max-width: 700px) {
+  .app {
+    padding-top: 4rem;
+  }
+  .pageTitle{
+    padding: 0.8rem;
+  }
+
 }
 
 @media (max-width: 1000px) {
   .pageTitle {
-    font-size: 6.4vw;
-  }
-}
-
-@media (max-width: 700px) {
-  .app {
-    padding-top: 70px;
+    font-size: 4.4vw;
   }
 }

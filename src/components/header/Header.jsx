@@ -1,18 +1,11 @@
-import React from 'react';
 import "./Header.css";
-import LiveTvIcon from '@mui/icons-material/LiveTv';
-
-
 
 const Header = () => {
   return (
-    <div className='header'>
-       <span className='tv'><LiveTvIcon  style={{ color:'white', fontSize:'45px'}}/></span> 
-        <span className='title'>TVshow</span>
-        
-       
-    </div>
-  )
-}
+    <span onClick={() => window.scroll(0, 0)} className="header">
+       TV SHOW ROOM 🎬
+    </span>
+  );
+};
 
-export default Header
+export default Header;

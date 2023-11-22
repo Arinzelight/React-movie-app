@@ -35,13 +35,13 @@ const Genres = ({
     fetchGenres();
 
     return () => {
-      setGenres({}); // unmounting
+      setGenres([]); // unmounting
     };
     // eslint-disable-next-line
   }, []);
 
   return (
-    <div style={{ padding: "6px 0" }}>
+    <div style={{ padding: "8px 0" }}>
       {selectedGenres.map((genre) => (
         <Chip
           style={{ margin: 2 }}
@@ -55,10 +55,11 @@ const Genres = ({
       ))}
       {genres.map((genre) => (
         <Chip
-          style={{ margin: 2 }}
+          style={{ margin: 2, background: '#777'}}
           label={genre.name}
           key={genre.id}
           clickable
+          color="primary"
           size="small"
           onClick={() => handleAdd(genre)}
         />
