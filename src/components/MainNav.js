@@ -8,11 +8,13 @@ import WhatshotIcon from "@mui/icons-material/Whatshot";
 import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles'; // Import the styled function
 
+
+
 const StyledBottomNavigation = styled(BottomNavigation)({
   width: "100%",
   position: "fixed",
   bottom: 0,
-  backgroundColor: "#fff",
+  backgroundColor: "rgb(26, 26, 38)",
   zIndex: 100,
 });
 
@@ -48,22 +50,22 @@ export default function SimpleBottomNavigation() {
       showLabels
     >
       <BottomNavigationAction
-        style={{ color: "rgb(242, 16, 61)", fontWeight:"bold" }}
+        style={{ color: "#fff", fontWeight:"bold" }}
         label="Trending"
         icon={<WhatshotIcon />}
       />
       <BottomNavigationAction
-        style={{ color: "rgb(242, 16, 61)", fontWeight:"bold" }}
+        style={{ color: "#fff", fontWeight:"bold" }}
         label="Movies"
         icon={<MovieIcon />}
       />
       <BottomNavigationAction
-        style={{ color: "rgb(242, 16, 61)", fontWeight:"bold" }}
+        style={{ color: "#fff", fontWeight:"bold" }}
         label="TV Series"
         icon={<TvIcon />}
       />
       <BottomNavigationAction
-        style={{ color: "rgb(242, 16, 61)", fontWeight:"bold"}}
+        style={{ color: "#fff", fontWeight:"bold"}}
         label="Search"
         icon={<SearchIcon />}
       />
