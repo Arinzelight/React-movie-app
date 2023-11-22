@@ -1,15 +1,14 @@
-// import * as React from 'react';
 import React, { useEffect, useState } from "react";
 import { styled } from "@mui/system";
-import Modal from "@mui/material/Modal"; // Updated import
-import Backdrop from "@mui/material/Backdrop"; // Updated import
-import Fade from "@mui/material/Fade"; // Updated import
+import "./ContentModal.css"
+import Modal from "@mui/material/Modal";
+import Backdrop from "@mui/material/Backdrop";
+import Fade from "@mui/material/Fade";
 import axios from "axios";
-import { img_500, unavailable, unavailableLandscape } from "../../config/config";
-import "./ContentModal.css";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import Carousel from "../Carousel/Carousel";
+import { img_500, unavailable, unavailableLandscape } from "../../config/config";
 
 const useStyles = styled((theme) => ({
   modal: {
@@ -17,16 +16,8 @@ const useStyles = styled((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
-  paper: {
-    width: "90%",
-    height: "80%",
-    backgroundColor: "#39445a",
-    border: "1px solid #282c34",
-    borderRadius: 10,
-    color: "white",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(1, 1, 3),
-  },
+
+
 }));
 
 export default function TransitionsModal({ children, media_type, id }) {
@@ -44,20 +35,27 @@ export default function TransitionsModal({ children, media_type, id }) {
   };
 
   const fetchData = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-    );
+    try {
+      const { data } = await axios.get(
+        `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      );
 
-    setContent(data);
-    // console.log(data);
+      setContent(data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const fetchVideo = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-    );
+    try {
+      const { data } = await axios.get(
+        `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      );
 
-    setVideo(data.results[0]?.key);
+      setVideo(data.results[0]?.key);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -65,6 +63,8 @@ export default function TransitionsModal({ children, media_type, id }) {
     fetchVideo();
     // eslint-disable-next-line
   }, []);
+
+  const embedUrl = `https://www.youtube.com/embed/${video}?autoplay=1`;
 
   return (
     <>
@@ -85,12 +85,14 @@ export default function TransitionsModal({ children, media_type, id }) {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 500,
+          // style: { backdropFilter: "blur(3px)" }, // Adjust the backdrop style as needed
         }}
       >
         <Fade in={open}>
           {content && (
             <div className={classes.paper}>
+              
+
               <div className="ContentModal">
                 <img
                   src={
@@ -101,7 +103,7 @@ export default function TransitionsModal({ children, media_type, id }) {
                   alt={content.name || content.title}
                   className="ContentModal__portrait"
                 />
-                <img
+                {/* <img
                   src={
                     content.backdrop_path
                       ? `${img_500}/${content.backdrop_path}`
@@ -109,8 +111,28 @@ export default function TransitionsModal({ children, media_type, id }) {
                   }
                   alt={content.name || content.title}
                   className="ContentModal__landscape"
-                />
+                /> */}
+
+              
                 <div className="ContentModal__about">
+
+                  <div className="iframeContainer">
+                     {/* Updated button to embed YouTube video */}
+
+                    {video && (
+                      <iframe
+                        title="trailer"
+                        width="100%"
+                        height="100%"
+                        src={embedUrl}
+                        frameBorder="0"
+                        allowFullScreen
+                      ></iframe>
+                    )}
+
+                  </div>
+                    
+              
                   <span className="ContentModal__title">
                     {content.name || content.title} (
                     {(
@@ -120,9 +142,9 @@ export default function TransitionsModal({ children, media_type, id }) {
                     ).substring(0, 4)}
                     )
                   </span>
-                  {content.tagline && (
+                  {/* {content.tagline && (
                     <i className="tagline">{content.tagline}</i>
-                  )}
+                  )} */}
 
                   <span className="ContentModal__description">
                     {content.overview}
@@ -131,17 +153,9 @@ export default function TransitionsModal({ children, media_type, id }) {
                   <div>
                     <Carousel id={id} media_type={media_type} />
                   </div>
-
-                  <Button
-                    variant="contained"
-                    startIcon={<YouTubeIcon />}
-                    color="secondary"
-                    target="__blank"
-                    href={`https://www.youtube.com/watch?v=${video}`}
-                  >
-                    Watch the Trailer
-                  </Button>
+                
                 </div>
+                
               </div>
             </div>
           )}
