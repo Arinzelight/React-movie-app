@@ -8,8 +8,6 @@ This is a Movie App built with React.js and Material-UI, fetching movie and seri
 
 ![Movie App Screenshot](./public/images/modal2.png)
 
-![Movie App Screenshot](./public/images/search.png)
-
 ## Features
 
 - **Browse Movies and TV Shows:** Explore a vast collection of movies and TV series.
