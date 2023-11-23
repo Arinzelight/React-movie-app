@@ -5,10 +5,8 @@ import Modal from "@mui/material/Modal";
 import Backdrop from "@mui/material/Backdrop";
 import Fade from "@mui/material/Fade";
 import axios from "axios";
-import Button from "@mui/material/Button";
-import YouTubeIcon from "@mui/icons-material/YouTube";
 import Carousel from "../Carousel/Carousel";
-import { img_500, unavailable, unavailableLandscape } from "../../config/config";
+import { img_500, unavailable } from "../../config/config";
 
 const useStyles = styled((theme) => ({
   modal: {
